@@ -43,19 +43,6 @@ class AuthController extends Controller
             'name' => 'required|string|between:2,100',
             'email' => 'required|string|email|max:100|unique:users',
             'password' => 'required|string|confirmed|min:6',
-        ],[
-            'name.required' => 'Name is required',
-            'name.string' => 'Name must be a string',
-            'name.between' => 'Name must be between 2 and 100 characters',
-            'email.required' => 'Email is required',
-            'email.string' => 'Email must be a string',
-            'email.email' => 'Email must be a valid email address',
-            'password.required'=>'Password is required',
-            'password.string'=>'Password must be a string',
-            'password.confirmed'=>'Password confirmation does not match',
-            'password.min'=>'Password must be at least 6 characters',
-            
-
         ]);
         if($validator->fails()){
             return response()->json($validator->errors()
