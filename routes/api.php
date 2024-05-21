@@ -24,7 +24,7 @@ use App\Http\Controllers\ProductController;
 Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
-], function ($router) {
+], function () {
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
@@ -36,7 +36,7 @@ Route::group([
 Route::group([
     // 'middleware' => 'DbBackup',
     'prefix' => 'brands'
-], function ($router) {
+], function () {
     Route::get('/', [BrandController::class, 'index']);
     Route::get('/{id}', [BrandController::class, 'show']);
     Route::post('/', [BrandController::class, 'store'])->middleware('is_admin');
@@ -48,7 +48,7 @@ Route::group([
 Route::group([
     // 'middleware' => 'DbBackup',
     'prefix' => 'categories'
-], function ($router) {
+], function () {
     Route::get('/', [CategoryController::class, 'index']);
     Route::get('/{id}', [CategoryController::class, 'show']);
     Route::post('/', [CategoryController::class, 'store'])->middleware('auth');
@@ -60,7 +60,7 @@ Route::group([
 Route::group([
     // 'middleware' => 'DbBackup',
     'prefix' => 'products'
-], function ($router) {
+], function () {
     Route::get('/', [ProductController::class, 'index']);
     Route::get('/{id}', [ProductController::class, 'show']);
     Route::post('/', [ProductController::class, 'store'])->middleware('auth');
@@ -72,7 +72,7 @@ Route::group([
 Route::group([
     // 'middleware' => 'DbBackup',
     'prefix' => 'location'
-], function ($router) {
+], function () {
     // Route::get('/', [LocationController::class, 'index']);
     // Route::get('/{id}', [LocationController::class, 'show']);
     Route::post('/', [LocationController::class, 'store'])->middleware('auth');
@@ -84,7 +84,7 @@ Route::group([
 Route::group([
     // 'middleware' => 'DbBackup',
     'prefix' => 'cart'
-], function ($router) {
+], function () {
     Route::get('/{id}', [CartController::class, 'show'])->middleware('auth');
     Route::post('/', [CartController::class, 'store'])->middleware('auth');
     Route::put('/{id}', [CartController::class, 'update'])->middleware('auth');
@@ -95,7 +95,7 @@ Route::group([
 Route::group([
     // 'middleware' => 'DbBackup',
     'prefix' => 'orders'
-], function ($router) {
+], function () {
     Route::get('/', [OrderController::class, 'index']);
     Route::get('/{id}', [OrderController::class, 'show'])->middleware('auth');
     Route::post('/', [OrderController::class, 'store'])->middleware('auth');
